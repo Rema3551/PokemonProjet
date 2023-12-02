@@ -123,18 +123,18 @@ class Affichage:
             """
 
             pvImageJoueur = str(jeu.p1.getPokemons()[0].getpV()) + "/" + str(jeu.p1.getPokemons()[0].getPvMax())
-            pvImgJoueur = pygame.font.SysFont('pokemonclassicregular', 13).render((pvImageJoueur), True, self.BLANC)
+            pvImgJoueur = pygame.font.SysFont('pokemonclassicregular', 12).render((pvImageJoueur), True, self.BLANC)
             pvImageBot = str(jeu.bot.getPokemons()[0].getpV()) + "/" + str(jeu.bot.getPokemons()[0].getPvMax())
-            pvImgBot = pygame.font.SysFont('pokemonclassicregular', 13).render((pvImageBot), True, self.BLANC)
-            self.screen.blit(pvImgJoueur, (300, 100))
-            self.screen.blit(pvImgBot, (20, 100))
+            pvImgBot = pygame.font.SysFont('pokemonclassicregular', 12).render((pvImageBot), True, self.BLANC)
+            self.screen.blit(pvImgJoueur, (290, 297))
+            self.screen.blit(pvImgBot, (188, 197))
 
 
             nomImageJoueur = str(jeu.p1.getPokemons()[0].getNom())
-            nomImgjoueur = pygame.font.SysFont('pokemonclassicregular', 13).render((nomImageJoueur), True, self.BLANC)
+            nomImgjoueur = pygame.font.SysFont('pokemonclassicregular', 12).render((nomImageJoueur), True, self.BLANC)
             nomImageBot = str(jeu.bot.getPokemons()[0].getNom())
-            nomImgBot = pygame.font.SysFont('pokemonclassicregular', 13).render((nomImageBot), True, self.BLANC)
-            self.screen.blit(nomImgjoueur, (20, 100))
+            nomImgBot = pygame.font.SysFont('pokemonclassicregular', 12).render((nomImageBot), True, self.BLANC)
+            self.screen.blit(nomImgjoueur, (273, 275))
             self.screen.blit(nomImgBot, (173, 165))
 
             #self.pvBarreJoueur = VieBarre(275, 275, 125, 10, jeu.p1.getPokemons()[0].getPvMax())
