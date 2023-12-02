@@ -25,7 +25,7 @@ class Affichage:
         self.boutonRondAImage = pygame.image.load('assets/boutons/boutonRondA.png')
         #écran images
         self.combatDebutImage = pygame.image.load('assets/combatDebut.png')
-        self.Combat = pygame.image.load('assets/combattest.png')
+        self.Combat = pygame.image.load('assets/combat.png')
         self.chooseFirstPokemonImage = pygame.image.load('assets/chooseFirstPokemon.png')
         self.chooseSecondPokemonImage = pygame.image.load('assets/chooseSecondPokemon.png')
         #self.choisirPokemon = self.jeu.pokemonSelectionImage
@@ -122,24 +122,23 @@ class Affichage:
             self.screen.blit(combatImageBot,(331,172))
             """
 
-            pvImageJoueur = str(str(jeu.p1.getPokemons()[0].getpV()) + "/" + str(jeu.p1.getPokemons()[0].getPvMax()))
-            pvImgJoueur = pygame.font.SysFont('pokemonclassicregular', 50).render((pvImageJoueur), True, self.BLANC)
-            pvImageBot = str(str(jeu.bot.getPokemons()[0].getpV()) + "/" + str(jeu.bot.getPokemons()[0].getPvMax()))
-            pvImgBot = pygame.font.SysFont('pokemonclassicregular', 50).render((pvImageBot), True, self.BLANC)
-            self.screen.blit(pvImgJoueur, (20, 50))
+            pvImageJoueur = str(jeu.p1.getPokemons()[0].getpV()) + "/" + str(jeu.p1.getPokemons()[0].getPvMax())
+            pvImgJoueur = pygame.font.SysFont('pokemonclassicregular', 10).render((pvImageJoueur), True, self.BLANC)
+            pvImageBot = str(jeu.bot.getPokemons()[0].getpV()) + "/" + str(jeu.bot.getPokemons()[0].getPvMax())
+            pvImgBot = pygame.font.SysFont('pokemonclassicregular', 10).render((pvImageBot), True, self.BLANC)
+            self.screen.blit(pvImgJoueur, (200, 50))
             self.screen.blit(pvImgBot, (20, 50))
 
 
             nomImageJoueur = str(jeu.p1.getPokemons()[0].getNom())
-            nomImgjoueur = pygame.font.SysFont('pokemonclassicregular', 50).render((nomImageJoueur), True, self.BLANC)
+            nomImgjoueur = pygame.font.SysFont('pokemonclassicregular', 10).render((nomImageJoueur), True, self.BLANC)
             nomImageBot = str(jeu.bot.getPokemons()[0].getNom())
-            nomImgBot = pygame.font.SysFont('pokemonclassicregular', 50).render((nomImageBot), True, self.BLANC)
-            self.screen.blit(nomImgjoueur, (200, 50))
-            self.screen.blit(nomImgBot, (20, 250))
+            nomImgBot = pygame.font.SysFont('pokemonclassicregular', 10).render((nomImageBot), True, self.BLANC)
+            self.screen.blit(nomImgjoueur, (20, 50))
+            self.screen.blit(nomImgBot, (200, 250))
 
-            pvBarreJoueur = pygame.image.load(VieBarre(0, 0, 100, 100, jeu.p1.getPokemons()[0].getPvMax))
-
-            self.screen.blit(pvBarreJoueur, (200, 50))
+            #self.pvBarreJoueur = VieBarre(275, 275, 125, 10, jeu.p1.getPokemons()[0].getPvMax())
+            #self.pvBarreJoueur.draw(self.screen)
 
 
             if jeu.pokemonEnCombatJ == PokemonEnCombat.PJC1:
