@@ -21,7 +21,7 @@ class Pokemon:
         self.pv=pvMax
         self.pA=pA
         self.attaqSpeciale=attaqSpeciale
-        self.faiblesse=faiblesse
+        self.faiblesse=faiblesse 
         self.avantage=avantage
         self.type=type
         self.selectionImage=selectionImage
