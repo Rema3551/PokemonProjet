@@ -58,10 +58,6 @@ class Jeu:
     def getPokemonSelectionImage(self, position):
         pokemon = self.listePokemons[position]
         return pokemon.selectionImage
-        #if getPokemonSelection() == nombres de pokemon présent dans la liste:
-        #setPokemonSelection(0)
-        #modulo
-        #setPokemonSelection(getPokemonSelection()-1)
     
     
 
