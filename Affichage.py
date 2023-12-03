@@ -150,6 +150,6 @@ class Affichage:
                 #clock
                 #enlever les PV avec attaquer()
                 #si l'adversaire n'a pas 0 hp:
-                    #mettre une image "l'adverse attaque votre pokemon"   
+                    #mettre une image "l'adverse attaque votre pokemon"
                     #clock
-                    #enlever les PV avec attaquer()       
+                    #enlever les PV avec attaquer()

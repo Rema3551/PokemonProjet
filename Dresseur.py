@@ -27,3 +27,6 @@ class Dresseur:
 
     def setPokemonEnCombat(self, pokemonEnCombat):
         self.pokemonsEnCombat = pokemonEnCombat
+
+    def echangerPokemons(self):
+        self.pokemons=[self.pokemons[1],self.pokemons[0]]
