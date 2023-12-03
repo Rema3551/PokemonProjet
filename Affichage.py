@@ -146,15 +146,26 @@ class Affichage:
                 pass
             if self.boutonRondA.draw() == True :
                 #mettre une image "vous attaquez le pokemon adverse"
-                #clock
+                #clock #pygame.time.wait()
                 jeu.p1.getPokemons()[0].attaquer(jeu.bot.getPokemons()[0])
                 #enlever les PV avec attaquer()
-                if jeu.bot.getPokemons()[0].getpV() <= 0 : 
+                if jeu.bot.getPokemons()[0].getpV() <= 0 :
+                    #mettre une image "votre adversaire change de pokémon"
+                    #clock #pygame.time.wait()
                     jeu.bot.echangerPokemons()
-                else :
+                elif jeu.bot.getPokemons()[0].getpV() > 0 :
                     #mettre une image "l'adverse attaque votre pokemon"
-                    #clock
+                    #clock #pygame.time.wait()
                     jeu.bot.getPokemons()[0].attaquer(jeu.p1.getPokemons()[0])
+
+                elif jeu.p1.getPokemons()[0].getpV() <= 0 :
+                    #mettre une image "votre adversaire change de pokémon"
+                    #clock #pygame.time.wait()
+                    jeu.p1.echangerPokemons()
+
+
+
+
             if jeu.combatFin():
                 #mettre une image "vous avez gagné" ou "vous avez perdu"
                 jeu.getJeuEtape()==JeuEtape.FIN_COMBAT
