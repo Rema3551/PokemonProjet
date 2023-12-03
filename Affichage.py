@@ -145,16 +145,5 @@ class Affichage:
             if self.boutonRondB.draw() == True :
                 pass
             if self.boutonRondA.draw() == True :
-                if jeu.pokemonEnCombatJ == PokemonEnCombat.PJC1 and jeu.pokemonEnCombatB == PokemonEnCombat.PBC1 :
-                    jeu.p1.getPokemons()[0].attaquer(jeu.bot.getPokemons()[0])
-                    jeu.bot.getPokemons()[0].attaquer(jeu.p1.getPokemons()[0])
-                if jeu.pokemonEnCombatJ == PokemonEnCombat.PJC1 and jeu.pokemonEnCombatB == PokemonEnCombat.PBC2 :
-                    jeu.p1.getPokemons()[0].attaquer(jeu.bot.getPokemons()[1])
-                    jeu.bot.getPokemons()[1].attaquer(jeu.p1.getPokemons()[0])
-                if jeu.pokemonEnCombatJ == PokemonEnCombat.PJC2 and jeu.pokemonEnCombatB == PokemonEnCombat.PBC1 :
-                    jeu.p1.getPokemons()[1].attaquer(jeu.bot.getPokemons()[0])
-                    jeu.bot.getPokemons()[0].attaquer(jeu.p1.getPokemons()[1])
-                if jeu.pokemonEnCombatJ == PokemonEnCombat.PJC2 and jeu.pokemonEnCombatB == PokemonEnCombat.PBC2 :
-                    jeu.p1.getPokemons()[1].attaquer(jeu.bot.getPokemons()[1])
-                    jeu.bot.getPokemons()[1].attaquer(jeu.p1.getPokemons()[1])
+                jeu.p1.getPokemons()[0].attaquer(jeu.bot.getPokemons()[0])
 
