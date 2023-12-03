@@ -40,7 +40,12 @@ class Pokemon:
         return self.nom
     
     def attaquer(self,pokemon2):
-        pokemon2.pv=pokemon2.pv-self.pA
+        if self.type == pokemon2.faiblesse:
+            pokemon2.pv=pokemon2.pv-(self.pA*2)
+        elif self.type == pokemon2.avantage:
+            pokemon2.pv=pokemon2.pv-(self.pA*2)
+        else:
+            pokemon2.pv=pokemon2.pv-self.pA
 
     def getCombatImageJoueur(self):
         return self.combatImageJoueur
