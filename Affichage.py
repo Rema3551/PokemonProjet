@@ -112,7 +112,7 @@ class Affichage:
 
         if jeu.getJeuEtape()==JeuEtape.COMBAT:
             self.screen.blit(self.Combat,(161,168))
-            
+
             combatImageJoueur = pygame.image.load(jeu.p1.getPokemons()[0].getCombatImageJoueur())
             self.screen.blit(combatImageJoueur,(161,168))
             combatImageBot = pygame.image.load(jeu.bot.getPokemons()[0].getCombatImageBot())
@@ -133,29 +133,6 @@ class Affichage:
             nomImgBot = pygame.font.SysFont('pokemonclassicregular', 12).render((nomImageBot), True, self.BLANC)
             self.screen.blit(nomImgjoueur, (273, 275))
             self.screen.blit(nomImgBot, (173, 165))
-
-            #self.pvBarreJoueur = VieBarre(275, 275, 125, 10, jeu.p1.getPokemons()[0].getPvMax())
-            #self.pvBarreJoueur.draw(self.screen)
-
-
-            if jeu.pokemonEnCombatJ == PokemonEnCombat.PJC1:
-                if jeu.p1.getPokemons()[0] == "Izuku":
-                    #self.vieBarreJ = VieBarre(1,1,5,5,jeu.getpvMax())
-                    self.screen.blit(self.izukuCombatImageJoueur,(161,222)) #à changer
-                if jeu.p1.getPokemons()[0] == "Gon":
-                    self.screen.blit(self.izukuCombatImageJoueur,(161,222)) #à changer
-                if jeu.p1.getPokemons()[0] == "Charmander":
-                    self.screen.blit(self.izukuCombatImageJoueur,(161,222)) #à changer
-                #self.vieBarreB.draw(self.screen)
-                #self.vieBarreJ.draw(self.screen)
-
-            if jeu.pokemonEnCombatB == PokemonEnCombat.PBC1:
-                if jeu.bot.getPokemons()[0] == "Izuku":
-                    self.screen.blit(self.izukuCombatImageBot,(331,172)) #à changer
-                if jeu.bot.getPokemons()[0] == "Gon":
-                    self.screen.blit(self.izukuCombatImageBot,(331,172)) #à changer
-                if jeu.bot.getPokemons()[0] == "Charmander":
-                    self.screen.blit(self.izukuCombatImageBot,(331,172)) #à changer
 
             if self.boutonH.draw() == True :
                 pass
