@@ -59,11 +59,16 @@ class Jeu:
         pokemon = self.listePokemons[position]
         return pokemon.selectionImage
     
-    
-
+    def combatFin(self):
+        if self.p1.getPokemons()[0].getpV() <= 0 and self.p1.getPokemons()[1].getpV <= 0:
+            return True
+        elif self.bot.getPokemons()[0].getpV() <= 0 and self.bot.getPokemons()[1].getpV <= 0:
+            return True
+        else:
+            return False
 
 
 
     def print(self):
         self.affichage.draw(self)
-        self.affichage.flip()        
+        self.affichage.flip()
