@@ -112,15 +112,12 @@ class Affichage:
 
         if jeu.getJeuEtape()==JeuEtape.COMBAT:
             self.screen.blit(self.Combat,(161,168))
-
-            """
-            marche que pour izuku psk pas d'images combat pour les autres
-
+            
             combatImageJoueur = pygame.image.load(jeu.p1.getPokemons()[0].getCombatImageJoueur())
-            self.screen.blit(combatImageJoueur,(161,222))
+            self.screen.blit(combatImageJoueur,(161,168))
             combatImageBot = pygame.image.load(jeu.bot.getPokemons()[0].getCombatImageBot())
-            self.screen.blit(combatImageBot,(331,172))
-            """
+            self.screen.blit(combatImageBot,(161,168))
+        
 
             pvImageJoueur = str(jeu.p1.getPokemons()[0].getpV()) + "/" + str(jeu.p1.getPokemons()[0].getPvMax())
             pvImgJoueur = pygame.font.SysFont('pokemonclassicregular', 12).render((pvImageJoueur), True, self.BLANC)

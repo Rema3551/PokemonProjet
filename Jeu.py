@@ -6,7 +6,7 @@ from Dresseur import *
 class Jeu:
 
     def __init__(self):
-        charmander = Pokemon("CHARMANDER", 44, 10, 50, "eau", "plante", "feu", 'assets/choisirCharmander.png', None, None)
+        charmander = Pokemon("CHARMANDER", 44, 10, 50, "eau", "plante", "feu", 'assets/choisirCharmander.png', 'assets\pokemonsCombat/charmanderCombatJoueur.png','assets\pokemonsCombat/charmanderCombatBot.png')
         gon = Pokemon("GON", 44, 10, 50, "eau", "plante", "feu", 'assets/choisirGon.png', None, None)
         izuku = Pokemon("IZUKU", 200, 5, 50, "eau", "plante", "feu", 'assets/choisirIzuku.png', 'assets\pokemonsCombat/izukuCombatJoueur.png', 'assets\pokemonsCombat/izukuCombatBot.png' )
         soldier = Pokemon("SOLDIER", 200, 5, 50, "eau", "plante", "feu", 'assets/choisirSoldier.png', 'assets\pokemonsCombat/soldierCombatJoueur.png', None)
@@ -26,7 +26,7 @@ class Jeu:
         self.pokemonEnCombatJ = PokemonEnCombat.PJC1
 
         self.pokemonsBot=random.shuffle(self.listePokemons)
-        self.bot.setPokemon(self.listePokemons[0])
+        self.bot.setPokemon(charmander)
         self.bot.setPokemon(self.listePokemons[1])
         print(self.bot.getPokemons()[0].nom)
         print(self.bot.getPokemons()[1].nom)
