@@ -145,11 +145,16 @@ class Affichage:
             if self.boutonRondB.draw() == True :
                 pass
             if self.boutonRondA.draw() == True :
-                jeu.p1.getPokemons()[0].attaquer(jeu.bot.getPokemons()[0])
                 #mettre une image "vous attaquez le pokemon adverse"
                 #clock
+                jeu.p1.getPokemons()[0].attaquer(jeu.bot.getPokemons()[0])
                 #enlever les PV avec attaquer()
-                #si l'adversaire n'a pas 0 hp:
+                if jeu.bot.getPokemons()[0].getpV() <= 0 : 
+                    jeu.bot.echangerPokemons()
+                else :
                     #mettre une image "l'adverse attaque votre pokemon"
                     #clock
-                    #enlever les PV avec attaquer()
+                    jeu.bot.getPokemons()[0].attaquer(jeu.p1.getPokemons()[0])
+            if jeu.combatFin():
+                #mettre une image "vous avez gagné" ou "vous avez perdu"
+                jeu.getJeuEtape()==JeuEtape.FIN_COMBAT
