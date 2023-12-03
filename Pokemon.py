@@ -15,7 +15,7 @@ class Pokemon:
 
     """
 
-    def __init__(self, nom:str, pvMax:int, pA:int, attaqSpeciale:int, faiblesse:str, avantage:str, type:str, selectionImage:str, combatImageJoueur:str, combatImageBot:str):
+    def __init__(self, nom:str, pvMax:int, pA:int, attaqSpeciale:int, type:str, avantage:str, faiblesse:str, selectionImage:str, combatImageJoueur:str, combatImageBot:str):
         self.nom=nom
         self.pvMax=pvMax
         self.pv=pvMax
