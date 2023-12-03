@@ -28,7 +28,8 @@ class Affichage:
         self.Combat = pygame.image.load('assets/combat.png')
         self.chooseFirstPokemonImage = pygame.image.load('assets/chooseFirstPokemon.png')
         self.chooseSecondPokemonImage = pygame.image.load('assets/chooseSecondPokemon.png')
-        #self.choisirPokemon = self.jeu.pokemonSelectionImage
+        self.playerAttackImage = pygame.image.load('assets/yourPokemonAttacksTheOpposingPokemon.png')
+        self.botAttackImage = pygame.image.load('assets/theOpposingPokemonAttacksYourPokemon.png')
         #images personnages combat
         self.izukuCombatImageJoueur = pygame.image.load('assets/pokemonsCombat/izukuCombatJoueur.png')
         self.izukuCombatImageBot = pygame.image.load('assets/pokemonsCombat/izukuCombatBot.png')
@@ -49,6 +50,7 @@ class Affichage:
         #création des barres de vie
         #self.vieBarreJ = VieBarre(1,1,5,5,None)
         #self.vieBarreB = VieBarre(44,44,55,55,self.jeu.bot.getPokemons()[0])
+        
         
 
     def flip(self):
@@ -145,27 +147,31 @@ class Affichage:
             if self.boutonRondB.draw() == True :
                 pass
             if self.boutonRondA.draw() == True :
-                #mettre une image "vous attaquez le pokemon adverse"
-                #clock #pygame.time.wait()
                 jeu.p1.getPokemons()[0].attaquer(jeu.bot.getPokemons()[0])
-                #enlever les PV avec attaquer()
+                self.screen.blit(self.playerAttackImage,(161,168))
+                self.screen.blit(self.playerAttackImage,(161,168))
+                pygame.time.wait(1000)
+                
                 if jeu.bot.getPokemons()[0].getpV() <= 0 :
                     #mettre une image "votre adversaire change de pokémon"
-                    #clock #pygame.time.wait()
+                    pygame.time.wait(1000)
                     jeu.bot.echangerPokemons()
-                elif jeu.bot.getPokemons()[0].getpV() > 0 :
-                    #mettre une image "l'adverse attaque votre pokemon"
-                    #clock #pygame.time.wait()
+
+                else :
                     jeu.bot.getPokemons()[0].attaquer(jeu.p1.getPokemons()[0])
+                    self.screen.blit(self.botAttackImage,(161,168))
+                    pygame.time.wait(1000)
+                    
 
-                elif jeu.p1.getPokemons()[0].getpV() <= 0 :
-                    #mettre une image "votre adversaire change de pokémon"
-                    #clock #pygame.time.wait()
-                    jeu.p1.echangerPokemons()
-
-
-
+                    if jeu.p1.getPokemons()[0].getpV() <= 0 :
+                        #mettre une image "votre adversaire change de pokémon"
+                        #clock #pygame.time.wait()
+                        jeu.p1.echangerPokemons()
 
             if jeu.combatFin():
                 #mettre une image "vous avez gagné" ou "vous avez perdu"
-                jeu.getJeuEtape()==JeuEtape.FIN_COMBAT
+                print("fini")
+                jeu.setJeuEtape(JeuEtape.FIN_COMBAT)
+
+        if jeu.getJeuEtape()==JeuEtape.FIN_COMBAT:
+            self.screen.blit(self.Combat,(161,168))
