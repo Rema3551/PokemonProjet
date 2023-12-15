@@ -23,10 +23,6 @@ print(pb2.getNom())
 
 
 
-#bouton class
-
-
-
 running = True
 
 while running:

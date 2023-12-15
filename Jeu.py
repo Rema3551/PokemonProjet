@@ -33,6 +33,10 @@ class Jeu:
 
         self.pokemonEnCombatB = PokemonEnCombat.PBC1
 
+        self.joueurEnTrainAttaquer = False
+        self.botEnTrainAttaquer = False
+
+
     
     def getPj1(self):
         return self.pj1
@@ -59,6 +63,23 @@ class Jeu:
         pokemon = self.listePokemons[position]
         return pokemon.selectionImage
     
+
+    def getJoueurEnTrainAttaquer(self) -> bool:
+        return self.joueurEnTrainAttaquer
+    
+    def setJoueurEnTrainAttaquer(self):
+        if self.joueurEnTrainAttaquer == True :
+            self.joueurEnTrainAttaquer = False
+        else :
+            self.joueurEnTrainAttaquer = True
+
+    def getBotEnTrainAttaquer(self):
+        if self.botEnTrainAttaquer == True:
+            self.botEnTrainAttaquer = False
+        else :
+            self.botEnTrainAttaquer = True
+
+
     def combatFin(self):
         if self.p1.getPokemons()[0].getpV() <= 0 and self.p1.getPokemons()[1].getpV() <= 0:
             return True

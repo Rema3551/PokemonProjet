@@ -1,4 +1,5 @@
 import pygame
+import time
 from VieBarre import * 
 from Pokemon import *
 #from Dresseur import *
@@ -149,24 +150,35 @@ class Affichage:
             if self.boutonRondA.draw() == True :
                 jeu.p1.getPokemons()[0].attaquer(jeu.bot.getPokemons()[0])
                 self.screen.blit(self.playerAttackImage,(161,168))
-                self.screen.blit(self.playerAttackImage,(161,168))
-                pygame.time.wait(1000)
-                
+                if self.boutonRondA.draw() == True :
+                    if jeu.bot.getPokemons()[0].getpV() <= 0 :
+                        #mettre une image "votre adversaire change de pokémon"
+                        jeu.bot.echangerPokemons()
+                    else :
+                        jeu.bot.getPokemons()[0].attaquer(jeu.p1.getPokemons()[0])
+                        self.screen.blit(self.botAttackImage,(161,168))
+                        if jeu.p1.getPokemons()[0].getpV() <= 0 :
+                            #mettre une image "votre adversaire change de pokémon"
+                            #clock #pygame.time.wait()
+                            jeu.p1.echangerPokemons()
+                """
+                time.sleep(1)
+
                 if jeu.bot.getPokemons()[0].getpV() <= 0 :
                     #mettre une image "votre adversaire change de pokémon"
-                    pygame.time.wait(1000)
                     jeu.bot.echangerPokemons()
+                    time.sleep(1)
 
                 else :
+                    time.sleep(1)
                     jeu.bot.getPokemons()[0].attaquer(jeu.p1.getPokemons()[0])
-                    self.screen.blit(self.botAttackImage,(161,168))
-                    pygame.time.wait(1000)
-                    
-
+                    self.screen.blit(self.botAttackImage,(161,168))  
+                    time.sleep(1) 
                     if jeu.p1.getPokemons()[0].getpV() <= 0 :
                         #mettre une image "votre adversaire change de pokémon"
                         #clock #pygame.time.wait()
                         jeu.p1.echangerPokemons()
+                """
 
             if jeu.combatFin():
                 #mettre une image "vous avez gagné" ou "vous avez perdu"
