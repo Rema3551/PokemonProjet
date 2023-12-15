@@ -64,6 +64,7 @@ class Jeu:
         return pokemon.selectionImage
     
 
+
     def getJoueurEnTrainAttaquer(self) -> bool:
         return self.joueurEnTrainAttaquer
     
@@ -74,6 +75,9 @@ class Jeu:
             self.joueurEnTrainAttaquer = True
 
     def getBotEnTrainAttaquer(self):
+        return self.botEnTrainAttaquer
+
+    def setBotEnTrainAttaquer(self):
         if self.botEnTrainAttaquer == True:
             self.botEnTrainAttaquer = False
         else :
