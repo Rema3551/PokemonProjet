@@ -1,23 +1,32 @@
 import random
 from Affichage import *
 from JeuEtape import *
+from CombatEtape import *
 from Dresseur import *
 
 class Jeu:
 
     def __init__(self):
+        """
         charmander = Pokemon("CHARMANDER", 44, 10, 50, "eau", "plante", "feu", 'assets/choisirCharmander.png', 'assets\pokemonsCombat/charmanderCombatJoueur.png','assets\pokemonsCombat/charmanderCombatBot.png')
         gon = Pokemon("GON", 44, 10, 50, "eau", "plante", "feu", 'assets/choisirGon.png', 'assets\pokemonsCombat/gonCombatJoueur.png', 'assets\pokemonsCombat/gonCombatBot.png')
         izuku = Pokemon("IZUKU", 200, 5, 50, "eau", "plante", "feu", 'assets/choisirIzuku.png', 'assets\pokemonsCombat/izukuCombatJoueur.png', 'assets\pokemonsCombat/izukuCombatBot.png')
         soldier = Pokemon("SOLDIER", 200, 5, 50, "eau", "plante", "feu", 'assets/choisirSoldier.png', 'assets\pokemonsCombat/soldierCombatJoueur.png', 'assets\pokemonsCombat/soldierCombatBot.png')
-        jessy = Pokemon("JESSY", 200, 5, 50, "eau", "plante", "feu", 'assets/choisirJessy.png', 'assets\pokemonsCombat/jessyCombatJoueur.png', 'assets\pokemonsCombat/jessyCombatBot.png')
-        olivier = Pokemon("OLIVIER", 200, 5, 50, "eau", "plante", "feu", 'assets/choisirOlivier.png', 'assets\pokemonsCombat/olivierCombatJoueur.png', 'assets\pokemonsCombat/olivierCombatBot.png')
+        """
+        jessy = Pokemon("JESSY", 10, 5, 50, "eau", "plante", "feu", 'assets/choisirJessy.png', 'assets\pokemonsCombat/jessyCombatJoueur.png', 'assets\pokemonsCombat/jessyCombatBot.png')
+        olivier = Pokemon("OLIVIER", 10, 5, 50, "eau", "plante", "feu", 'assets/choisirOlivier.png', 'assets\pokemonsCombat/olivierCombatJoueur.png', 'assets\pokemonsCombat/olivierCombatBot.png')
+        raoul = Pokemon("RAOUL", 10, 5, 50, "eau", "plante", "feu", 'assets/choisirRaoul.png', 'assets\pokemonsCombat/raoulCombatJoueur.png', 'assets\pokemonsCombat/raoulCombatBot.png')
+        kilyan = Pokemon("KILYAN", 10, 5, 50, "eau", "plante", "feu", 'assets/choisirKilyan.png', 'assets\pokemonsCombat/kilyanCombatJoueur.png', 'assets\pokemonsCombat/kilyanCombatBot.png')
+        titouan = Pokemon("TITOUAN", 10, 5, 50, "eau", "plante", "feu", 'assets/choisirTitouan.png', 'assets\pokemonsCombat/titouanCombatJoueur.png', 'assets\pokemonsCombat/titouanCombatBot.png')
+        julien = Pokemon("JULIEN", 10, 5, 50, "eau", "plante", "feu", 'assets/choisirJulien.png', 'assets\pokemonsCombat/julienCombatJoueur.png', 'assets\pokemonsCombat/julienCombatBot.png')
+        stephen = Pokemon("STEPHEN", 10, 5, 50, "eau", "plante", "feu", 'assets/choisirStephen.png', 'assets\pokemonsCombat/stephenCombatJoueur.png', 'assets\pokemonsCombat/stephenCombatBot.png')
+        professeur = Pokemon("PROFESSEUR", 10, 5, 50, "eau", "plante", "feu", 'assets/choisirProfesseur.png', 'assets\pokemonsCombat/professeurCombatJoueur.png', 'assets\pokemonsCombat/professeurCombatBot.png')
 
-        self.listePokemons=[charmander, gon, izuku, soldier, jessy, olivier]
+        self.listePokemons=[jessy, olivier, raoul, kilyan, titouan, professeur, julien, stephen] #ajouter charmander, gon, izuku, soldier, pour les autres personnages
 
         self.affichage=Affichage()
         self.jeuEtape = JeuEtape.DEBUT
-
+        self.combatEtape = CombatEtape.COMBAT
         self.p1=Dresseur()
         self.bot=Dresseur()
         
@@ -25,11 +34,13 @@ class Jeu:
         self.pj2=""
         self.pokemonEnCombatJ = PokemonEnCombat.PJC1
 
+        """
         self.pokemonsBot=random.shuffle(self.listePokemons)
         self.bot.setPokemon(self.listePokemons[0])
         self.bot.setPokemon(self.listePokemons[1])
         print(self.bot.getPokemons()[0].nom)
         print(self.bot.getPokemons()[1].nom)
+        """
 
         self.pokemonEnCombatB = PokemonEnCombat.PBC1
 
@@ -58,12 +69,17 @@ class Jeu:
 
     def getJeuEtape(self):
         return self.jeuEtape
+
+    def getCombatEtape(self):
+        return self.combatEtape
     
+    def setCombatEtape(self, combatEtape):
+        self.combatEtape=combatEtape
+        
     def getPokemonSelectionImage(self, position):
         pokemon = self.listePokemons[position]
         return pokemon.selectionImage
     
-
 
     def getJoueurEnTrainAttaquer(self) -> bool:
         return self.joueurEnTrainAttaquer
@@ -83,7 +99,6 @@ class Jeu:
         else :
             self.botEnTrainAttaquer = True
 
-
     def combatFin(self):
         if self.p1.getPokemons()[0].getpV() <= 0 and self.p1.getPokemons()[1].getpV() <= 0:
             return True
@@ -93,6 +108,15 @@ class Jeu:
             return False
 
 
+    def ajouterPokemonsBot(self):
+        self.pokemonsBot=random.shuffle(self.listePokemons)
+        self.bot.setPokemon(self.listePokemons[0])
+        self.bot.setPokemon(self.listePokemons[1])
+        self.listePokemons.pop(1)
+        self.listePokemons.pop(0)
+        print(self.bot.getPokemons()[0].nom)
+        print(self.bot.getPokemons()[1].nom)
+        print(self.listePokemons)
 
     def print(self):
         self.affichage.draw(self)
