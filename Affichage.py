@@ -149,7 +149,7 @@ class Affichage:
             if self.boutonRondB.draw() == True :
                 pass
             
-            if jeu.getCombatEtape() == CombatEtape.COMBAT :
+            if jeu.getCombatEtape() == CombatEtape.COMBAT_FIGHT :
                 if self.boutonRondA.draw() == True :
                     jeu.setCombatEtape(CombatEtape.JOUEUR_ATTAQUE)
             
@@ -161,7 +161,7 @@ class Affichage:
                     if jeu.bot.getPokemons()[0].getpV() <= 0 :
                         #mettre une image "votre adversaire change de pokémon"
                         jeu.bot.echangerPokemons()
-                        jeu.setCombatEtape(CombatEtape.COMBAT)
+                        jeu.setCombatEtape(CombatEtape.COMBAT_FIGHT)
                     else :
                         jeu.setCombatEtape(CombatEtape.BOT_ATTAQUE)
             
@@ -174,7 +174,7 @@ class Affichage:
                     if jeu.p1.getPokemons()[0].getpV() <= 0 :
                         #mettre une image "vous changez de pokémon"
                         jeu.p1.echangerPokemons()
-                    jeu.setCombatEtape(CombatEtape.COMBAT)
+                    jeu.setCombatEtape(CombatEtape.COMBAT_FIGHT)
 
             
             if jeu.combatFin():

@@ -9,18 +9,6 @@ from PokemonEnCombat import *
 
 jeu = Jeu()
 
-"""
-p1=Dresseur()
-bot=Dresseur()
-bot.hasard()
-print(bot.getPokemonsDresseur())
-pb1=Pokemon(bot.getPokemonsDresseur()[0])
-#pb1=Pokemon(bot.getPokemonsDresseur()[0])
-pb2=Pokemon(bot.getPokemonsDresseur()[1])
-print(pb1.getNom())
-print(pb2.getNom())
-"""
-
 
 
 running = True

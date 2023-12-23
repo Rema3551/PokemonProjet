@@ -24,7 +24,7 @@ class Jeu:
 
         self.affichage=Affichage()
         self.jeuEtape = JeuEtape.DEBUT
-        self.combatEtape = CombatEtape.COMBAT
+        self.combatEtape = CombatEtape.COMBAT_FIGHT
         self.p1=Dresseur()
         self.bot=Dresseur()
         
