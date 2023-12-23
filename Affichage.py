@@ -5,6 +5,7 @@ from Pokemon import *
 #from Dresseur import *
 from Bouton import *
 from JeuEtape import *
+from CombatEtape import *
 from PokemonEnCombat import *
 import Jeu
 
@@ -108,27 +109,24 @@ class Affichage:
                 jeu.p1.setPokemon(jeu.listePokemons[self.pokemonSelectionPosition])
                 print(jeu.p1.pokemons)
                 if len(jeu.p1.getPokemons())==2:
-                    jeu.setJeuEtape(JeuEtape.COMBAT)       
-                #à corriger
+                    jeu.setJeuEtape(JeuEtape.COMBAT)     
 
 
 
         if jeu.getJeuEtape()==JeuEtape.COMBAT:
             self.screen.blit(self.Combat,(161,168))
-
+            
             combatImageJoueur = pygame.image.load(jeu.p1.getPokemons()[0].getCombatImageJoueur())
             self.screen.blit(combatImageJoueur,(161,168))
             combatImageBot = pygame.image.load(jeu.bot.getPokemons()[0].getCombatImageBot())
             self.screen.blit(combatImageBot,(161,168))
         
-
             pvImageJoueur = str(jeu.p1.getPokemons()[0].getpV()) + "/" + str(jeu.p1.getPokemons()[0].getPvMax())
             pvImgJoueur = pygame.font.SysFont('pokemonclassicregular', 12).render((pvImageJoueur), True, self.BLANC)
             pvImageBot = str(jeu.bot.getPokemons()[0].getpV()) + "/" + str(jeu.bot.getPokemons()[0].getPvMax())
             pvImgBot = pygame.font.SysFont('pokemonclassicregular', 12).render((pvImageBot), True, self.BLANC)
             self.screen.blit(pvImgJoueur, (290, 297))
             self.screen.blit(pvImgBot, (188, 197))
-
 
             nomImageJoueur = str(jeu.p1.getPokemons()[0].getNom())
             nomImgjoueur = pygame.font.SysFont('pokemonclassicregular', 12).render((nomImageJoueur), True, self.BLANC)
@@ -147,21 +145,34 @@ class Affichage:
                 pass
             if self.boutonRondB.draw() == True :
                 pass
-            if self.boutonRondA.draw() == True :
-                jeu.p1.getPokemons()[0].attaquer(jeu.bot.getPokemons()[0])
-                self.screen.blit(self.playerAttackImage,(161,168))
+            
+            if jeu.getCombatEtape() == CombatEtape.COMBAT :
                 if self.boutonRondA.draw() == True :
+                    jeu.setCombatEtape(CombatEtape.JOUEUR_ATTAQUE)
+            
+            if jeu.getCombatEtape() == CombatEtape.JOUEUR_ATTAQUE :
+                self.screen.blit(self.playerAttackImage,(161,168))
+                
+                if self.boutonRondA.draw() == True :   
+                    jeu.p1.getPokemons()[0].attaquer(jeu.bot.getPokemons()[0])
                     if jeu.bot.getPokemons()[0].getpV() <= 0 :
                         #mettre une image "votre adversaire change de pokémon"
                         jeu.bot.echangerPokemons()
+                        jeu.setCombatEtape(CombatEtape.COMBAT)
                     else :
-                        jeu.bot.getPokemons()[0].attaquer(jeu.p1.getPokemons()[0])
-                        self.screen.blit(self.botAttackImage,(161,168))
-                        if jeu.p1.getPokemons()[0].getpV() <= 0 :
-                            #mettre une image "votre adversaire change de pokémon"
-                            #clock #pygame.time.wait()
-                            jeu.p1.echangerPokemons()
-                """
+                        jeu.setCombatEtape(CombatEtape.BOT_ATTAQUE)
+            
+            if jeu.getCombatEtape() == CombatEtape.BOT_ATTAQUE :
+                self.screen.blit(self.botAttackImage,(161,168))
+                
+                if self.boutonRondA.draw() == True :
+                    jeu.bot.getPokemons()[0].attaquer(jeu.p1.getPokemons()[0])
+                    if jeu.p1.getPokemons()[0].getpV() <= 0 :
+                        #mettre une image "vous changez de pokémon"
+                        jeu.p1.echangerPokemons()
+                    jeu.setCombatEtape(CombatEtape.COMBAT)
+
+            """
                 time.sleep(1)
 
                 if jeu.bot.getPokemons()[0].getpV() <= 0 :
