@@ -25,9 +25,13 @@ class Affichage:
         self.boutonBImage = pygame.image.load('assets/boutons/boutonBas.png')
         self.boutonRondBImage = pygame.image.load('assets/boutons/boutonRondB.png')
         self.boutonRondAImage = pygame.image.load('assets/boutons/boutonRondA.png')
-        #écran images
+        #combat images
         self.combatDebutImage = pygame.image.load('assets/combatDebut.png')
         self.combat_fight = pygame.image.load('assets/combat_fight.png')
+        self.combat_choosePkm = pygame.image.load('assets/combat_choosePkm.png')
+        self.combat_item = pygame.image.load('assets/combat_item.png')
+        self.combat_run = pygame.image.load('assets/combat_item.png')
+
         self.chooseFirstPokemonImage = pygame.image.load('assets/chooseFirstPokemon.png')
         self.chooseSecondPokemonImage = pygame.image.load('assets/chooseSecondPokemon.png')
         self.playerAttackImage = pygame.image.load('assets/yourPokemonAttacksTheOpposingPokemon.png')
