@@ -27,7 +27,7 @@ class Affichage:
         self.boutonRondAImage = pygame.image.load('assets/boutons/boutonRondA.png')
         #écran images
         self.combatDebutImage = pygame.image.load('assets/combatDebut.png')
-        self.Combat = pygame.image.load('assets/combat.png')
+        self.combat_fight = pygame.image.load('assets/combat_fight.png')
         self.chooseFirstPokemonImage = pygame.image.load('assets/chooseFirstPokemon.png')
         self.chooseSecondPokemonImage = pygame.image.load('assets/chooseSecondPokemon.png')
         self.playerAttackImage = pygame.image.load('assets/yourPokemonAttacksTheOpposingPokemon.png')
@@ -117,7 +117,7 @@ class Affichage:
 
 
         if jeu.getJeuEtape()==JeuEtape.COMBAT:
-            self.screen.blit(self.Combat,(161,168))
+            self.screen.blit(self.combat_fight,(161,168))
             
             combatImageJoueur = pygame.image.load(jeu.p1.getPokemons()[0].getCombatImageJoueur())
             self.screen.blit(combatImageJoueur,(161,168))
@@ -183,4 +183,4 @@ class Affichage:
                 jeu.setJeuEtape(JeuEtape.FIN_COMBAT)
 
         if jeu.getJeuEtape()==JeuEtape.FIN_COMBAT:
-            self.screen.blit(self.Combat,(161,168))
+            self.screen.blit(self.combat_fight,(161,168))
