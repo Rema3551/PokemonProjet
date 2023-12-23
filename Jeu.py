@@ -18,11 +18,9 @@ class Jeu:
         raoul = Pokemon("RAOUL", 10, 5, 50, "eau", "plante", "feu", 'assets/choisirRaoul.png', 'assets\pokemonsCombat/raoulCombatJoueur.png', 'assets\pokemonsCombat/raoulCombatBot.png')
         kilyan = Pokemon("KILYAN", 10, 5, 50, "eau", "plante", "feu", 'assets/choisirKilyan.png', 'assets\pokemonsCombat/kilyanCombatJoueur.png', 'assets\pokemonsCombat/kilyanCombatBot.png')
         titouan = Pokemon("TITOUAN", 10, 5, 50, "eau", "plante", "feu", 'assets/choisirTitouan.png', 'assets\pokemonsCombat/titouanCombatJoueur.png', 'assets\pokemonsCombat/titouanCombatBot.png')
-        julien = Pokemon("JULIEN", 10, 5, 50, "eau", "plante", "feu", 'assets/choisirJulien.png', 'assets\pokemonsCombat/julienCombatJoueur.png', 'assets\pokemonsCombat/julienCombatBot.png')
-        stephen = Pokemon("STEPHEN", 10, 5, 50, "eau", "plante", "feu", 'assets/choisirStephen.png', 'assets\pokemonsCombat/stephenCombatJoueur.png', 'assets\pokemonsCombat/stephenCombatBot.png')
         professeur = Pokemon("PROFESSEUR", 10, 5, 50, "eau", "plante", "feu", 'assets/choisirProfesseur.png', 'assets\pokemonsCombat/professeurCombatJoueur.png', 'assets\pokemonsCombat/professeurCombatBot.png')
 
-        self.listePokemons=[jessy, olivier, raoul, kilyan, titouan, professeur, julien, stephen] #ajouter charmander, gon, izuku, soldier, pour les autres personnages
+        self.listePokemons=[jessy, olivier, raoul, kilyan, titouan, professeur] # ajouter charmander, gon, izuku, soldier, pour les avoir
 
         self.affichage=Affichage()
         self.jeuEtape = JeuEtape.DEBUT

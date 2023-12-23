@@ -169,12 +169,14 @@ class Affichage:
                 self.screen.blit(self.botAttackImage,(161,168))
                 
                 if self.boutonRondA.draw() == True :
+
                     jeu.bot.getPokemons()[0].attaquer(jeu.p1.getPokemons()[0])
                     if jeu.p1.getPokemons()[0].getpV() <= 0 :
                         #mettre une image "vous changez de pokémon"
                         jeu.p1.echangerPokemons()
                     jeu.setCombatEtape(CombatEtape.COMBAT)
 
+            
             if jeu.combatFin():
                 #mettre une image "vous avez gagné" ou "vous avez perdu"
                 print("fini")
