@@ -2,6 +2,7 @@ import random
 from Affichage import *
 from JeuEtape import *
 from CombatEtape import *
+from CombatCurseur import *
 from Dresseur import *
 
 class Jeu:
@@ -24,22 +25,14 @@ class Jeu:
 
         self.affichage=Affichage()
         self.jeuEtape = JeuEtape.DEBUT
-        self.combatEtape = CombatEtape.COMBAT_FIGHT
+        self.combatEtape = CombatEtape.INACTIF
+        self.combatCurseur = CombatCurseur.COMBAT_FIGHT
         self.p1=Dresseur()
         self.bot=Dresseur()
         
         self.pj1=""
         self.pj2=""
         self.pokemonEnCombatJ = PokemonEnCombat.PJC1
-
-        """
-        self.pokemonsBot=random.shuffle(self.listePokemons)
-        self.bot.setPokemon(self.listePokemons[0])
-        self.bot.setPokemon(self.listePokemons[1])
-        print(self.bot.getPokemons()[0].nom)
-        print(self.bot.getPokemons()[1].nom)
-        """
-
         self.pokemonEnCombatB = PokemonEnCombat.PBC1
 
         self.joueurEnTrainAttaquer = False
@@ -73,12 +66,17 @@ class Jeu:
     
     def setCombatEtape(self, combatEtape):
         self.combatEtape=combatEtape
-        
+
+    def getCombatCurseur(self):
+        return self.combatCurseur
+
+    def setCombatCurseur(self, combatCurseur):
+        self.combatCurseur=combatCurseur
+
     def getPokemonSelectionImage(self, position):
         pokemon = self.listePokemons[position]
         return pokemon.selectionImage
     
-
     def getJoueurEnTrainAttaquer(self) -> bool:
         return self.joueurEnTrainAttaquer
     
