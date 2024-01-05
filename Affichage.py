@@ -33,6 +33,9 @@ class Affichage:
         self.combat_choosePkm = pygame.image.load('assets/combat_choosePkm.png')
         self.combat_item = pygame.image.load('assets/combat_item.png')
         self.combat_run = pygame.image.load('assets/combat_run.png')
+        self.youCantRunInCombat = pygame.image.load('assets/youCantRunInCombat.png')
+        self.youDontHaveAnyItems = pygame.image.load('assets/youDontHaveAnyItems.png')
+        self.youExchangeYourPokemon = pygame.image.load('assets/youExchangeYourPokemon.png')
 
         self.chooseFirstPokemonImage = pygame.image.load('assets/chooseFirstPokemon.png')
         self.chooseSecondPokemonImage = pygame.image.load('assets/chooseSecondPokemon.png')
@@ -128,11 +131,17 @@ class Affichage:
             combatImageBot = pygame.image.load(jeu.bot.getPokemons()[0].getCombatImageBot())
             self.screen.blit(combatImageBot,(161,168))
         
+            vieBarreJ = VieBarre(190,195,100,5,jeu.p1.getPokemons()[0].getpV(), jeu.p1.getPokemons()[0].getPvMax())
+            vieBarreB = VieBarre(282,296,100,5,jeu.bot.getPokemons()[0].getpV(), jeu.bot.getPokemons()[0].getPvMax())            
+            vieBarreJ.draw(self.screen)
+            vieBarreB.draw(self.screen)
+
             pvImageJoueur = str(jeu.p1.getPokemons()[0].getpV()) + "/" + str(jeu.p1.getPokemons()[0].getPvMax())
             pvImgJoueur = pygame.font.SysFont('pokemonclassicregular', 12).render((pvImageJoueur), True, self.BLANC)
             pvImageBot = str(jeu.bot.getPokemons()[0].getpV()) + "/" + str(jeu.bot.getPokemons()[0].getPvMax())
             pvImgBot = pygame.font.SysFont('pokemonclassicregular', 12).render((pvImageBot), True, self.BLANC)
-            self.screen.blit(pvImgJoueur, (290, 297))
+            self.screen.blit(pvImgJoueur, (290, 297)) 
+
             self.screen.blit(pvImgBot, (188, 197))
 
             nomImageJoueur = str(jeu.p1.getPokemons()[0].getNom())
@@ -153,12 +162,15 @@ class Affichage:
                         jeu.setCombatCurseur(CombatCurseur.COMBAT_PKMN)
                     if self.boutonG.draw() == True :
                         jeu.setCombatCurseur(CombatCurseur.COMBAT_ITEM)
+                    if self.boutonRondA.draw()== True :
+                        jeu.setCombatEtape(CombatEtape.IMAGE_RUN)
                     
                 if jeu.getCombatCurseur() == CombatCurseur.COMBAT_ITEM :
                     self.screen.blit(self.combat_item,(161,168))
+                    if self.boutonRondA.draw() == True :
+                        jeu.setCombatEtape(CombatEtape.IMAGE_ITEMS)
                     if self.boutonH.draw() == True :
                         jeu.setCombatCurseur(CombatCurseur.COMBAT_FIGHT)
-                    
                     if self.boutonD.draw() == True :
                         jeu.setCombatCurseur(CombatCurseur.COMBAT_RUN)
                     
@@ -166,6 +178,9 @@ class Affichage:
                 if jeu.getCombatCurseur() == CombatCurseur.COMBAT_PKMN :
                     self.screen.blit(self.combat_choosePkm,(161,168))
                     
+                    if self.boutonRondA.draw() == True :
+                        jeu.setCombatEtape(CombatEtape.IMAGE_PKMNCHANGE)
+
                     if self.boutonG.draw() == True :
                         jeu.setCombatCurseur(CombatCurseur.COMBAT_FIGHT)
                     
@@ -197,6 +212,53 @@ class Affichage:
                     pass
                 if self.boutonB.draw() == True :
                     pass
+            
+            if jeu.getCombatEtape() == CombatEtape.IMAGE_RUN:
+                self.screen.blit(self.youCantRunInCombat,(161,168))
+                if self.boutonRondA.draw() == True : 
+                    jeu.setCombatEtape(CombatEtape.INACTIF)
+                if self.boutonRondB.draw() == True :
+                    pass
+                if self.boutonH.draw() == True :
+                    pass
+                if self.boutonG.draw() == True :
+                    pass
+                if self.boutonD.draw() == True :
+                    pass
+                if self.boutonB.draw() == True :
+                    pass
+
+            if jeu.getCombatEtape() == CombatEtape.IMAGE_ITEMS:
+                self.screen.blit(self.youDontHaveAnyItems,(161,168))
+                if self.boutonRondA.draw() == True : 
+                    jeu.setCombatEtape(CombatEtape.INACTIF)
+                if self.boutonRondB.draw() == True :
+                    pass
+                if self.boutonH.draw() == True :
+                    pass
+                if self.boutonG.draw() == True :
+                    pass
+                if self.boutonD.draw() == True :
+                    pass
+                if self.boutonB.draw() == True :
+                    pass
+
+            if jeu.getCombatEtape() == CombatEtape.IMAGE_PKMNCHANGE:
+                self.screen.blit(self.youExchangeYourPokemon,(161,168))
+                if self.boutonRondA.draw() == True : 
+                    jeu.setCombatEtape(CombatEtape.INACTIF)
+                    jeu.p1.echangerPokemons()
+                if self.boutonRondB.draw() == True :
+                    pass
+                if self.boutonH.draw() == True :
+                    pass
+                if self.boutonG.draw() == True :
+                    pass
+                if self.boutonD.draw() == True :
+                    pass
+                if self.boutonB.draw() == True :
+                    pass
+
 
             if jeu.getCombatEtape() == CombatEtape.JOUEUR_ATTAQUE :
                 self.screen.blit(self.playerAttackImage,(161,168))
