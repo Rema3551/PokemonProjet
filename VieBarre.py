@@ -1,12 +1,12 @@
 import pygame
 
 class VieBarre():
-    def __init__(self, x, y, w, h, pvMax):
+    def __init__(self, x, y, w, h, pv, pvMax):
         self.x = x
         self.y = y
         self.w = w
         self.h = h
-        self.hp = pvMax
+        self.hp = pv
         self.max_hp = pvMax
 
     def draw(self, surface):
