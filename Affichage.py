@@ -116,6 +116,7 @@ class Affichage:
             if self.boutonRondA.draw() == True :
                 jeu.p1.setPokemon(jeu.listePokemons[self.pokemonSelectionPosition])
                 jeu.listePokemons.pop(self.pokemonSelectionPosition)
+                self.pokemonSelectionPosition=0
                 print(jeu.p1.pokemons)
 
                 if len(jeu.p1.getPokemons())==2:
@@ -131,8 +132,8 @@ class Affichage:
             combatImageBot = pygame.image.load(jeu.bot.getPokemons()[0].getCombatImageBot())
             self.screen.blit(combatImageBot,(161,168))
         
-            vieBarreJ = VieBarre(190,195,100,5,jeu.p1.getPokemons()[0].getpV(), jeu.p1.getPokemons()[0].getPvMax())
-            vieBarreB = VieBarre(282,296,100,5,jeu.bot.getPokemons()[0].getpV(), jeu.bot.getPokemons()[0].getPvMax())            
+            vieBarreJ = VieBarre(282,296,100,5,jeu.p1.getPokemons()[0].getpV(), jeu.p1.getPokemons()[0].getPvMax())
+            vieBarreB = VieBarre(190,195,100,5,jeu.bot.getPokemons()[0].getpV(), jeu.bot.getPokemons()[0].getPvMax())            
             vieBarreJ.draw(self.screen)
             vieBarreB.draw(self.screen)
 
@@ -271,6 +272,17 @@ class Affichage:
                         jeu.setCombatEtape(CombatEtape.INACTIF)
                     else :
                         jeu.setCombatEtape(CombatEtape.BOT_ATTAQUE)
+                if self.boutonH.draw() == True :
+                    pass
+                if self.boutonG.draw() == True :
+                    pass
+                if self.boutonD.draw() == True :
+                    pass
+                if self.boutonB.draw() == True :
+                    pass
+                if self.boutonRondB.draw() == True :
+                    pass
+                
             
             if jeu.getCombatEtape() == CombatEtape.BOT_ATTAQUE :
                 self.screen.blit(self.botAttackImage,(161,168))
@@ -283,6 +295,17 @@ class Affichage:
                         jeu.p1.echangerPokemons()
                     jeu.setCombatEtape(CombatEtape.INACTIF)
 
+                if self.boutonH.draw() == True :
+                    pass
+                if self.boutonG.draw() == True :
+                    pass
+                if self.boutonD.draw() == True :
+                    pass
+                if self.boutonB.draw() == True :
+                    pass
+                if self.boutonRondB.draw() == True :
+                    pass
+                
             
             if jeu.combatFin():
                 #mettre une image "vous avez gagné" ou "vous avez perdu"
