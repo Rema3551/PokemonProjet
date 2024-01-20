@@ -3,30 +3,23 @@ from Pokemon import *
 class Dresseur:
     """
     attributs :
-        -pokemons
+        -pokemons (liste qui contient les pokémons du dresseur)
     
     methodes :
-        -changerPokemon()
-        -choisirPokemon()
-        -botPokemon()
+        -getPokemons(self)
+        -setPokemon(self,pokemon:Pokemon)
+        -echangerPokemons(self)
     """
 
 
     def __init__(self):
         self.pokemons=[]
-        self.pokemonsEnCombat=None
 
     def getPokemons(self):
         return self.pokemons
         
     def setPokemon(self,pokemon:Pokemon):
         self.pokemons.append(pokemon)
-
-    def getPokemonsEnCombat(self):
-        return self.pokemonsEnCombat
-
-    def setPokemonEnCombat(self, pokemonEnCombat):
-        self.pokemonsEnCombat = pokemonEnCombat
-
+    
     def echangerPokemons(self):
         self.pokemons=[self.pokemons[1],self.pokemons[0]]

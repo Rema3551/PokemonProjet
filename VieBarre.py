@@ -10,7 +10,6 @@ class VieBarre():
         self.max_hp = pvMax
 
     def draw(self, surface):
-        #calculate health ratio
         ratio = self.hp / self.max_hp
         pygame.draw.rect(surface, "red", (self.x, self.y, self.w, self.h))
         pygame.draw.rect(surface, "green", (self.x, self.y, self.w * ratio, self.h))

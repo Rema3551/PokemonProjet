@@ -1,13 +1,9 @@
 import pygame
-import time
 from VieBarre import * 
-from Pokemon import *
-#from Dresseur import *
 from Bouton import *
 from JeuEtape import *
 from CombatEtape import *
 from CombatCurseur import *
-from PokemonEnCombat import *
 import Jeu
 
 class Affichage:

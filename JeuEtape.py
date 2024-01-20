@@ -6,3 +6,4 @@ class JeuEtape(Enum):
     POKEMON_SELECTION = 2
     COMBAT = 3
     FIN_COMBAT = 4
+    

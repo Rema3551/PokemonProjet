@@ -32,8 +32,6 @@ class Jeu:
         
         self.pj1=""
         self.pj2=""
-        self.pokemonEnCombatJ = PokemonEnCombat.PJC1
-        self.pokemonEnCombatB = PokemonEnCombat.PBC1
 
         self.joueurEnTrainAttaquer = False
         self.botEnTrainAttaquer = False

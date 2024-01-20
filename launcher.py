@@ -1,10 +1,12 @@
 #https://online.visual-paradigm.com/w/hbwsawpb/diagrams/#diagram:workspace=hbwsawpb&proj=0&id=1&type=ClassDiagram
-
+"""
 from Pokemon import *
 from Dresseur import *
 from JeuEtape import *
-from Jeu import *
 from PokemonEnCombat import *
+"""
+from Jeu import *
+
 
 
 jeu = Jeu()
