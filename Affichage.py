@@ -49,6 +49,9 @@ class Affichage:
         #musiques/son de fond
         self.battleMusic = pygame.mixer.music.load('assets/battleMusic.mp3')
         pygame.mixer.music.play(-1)
+        #images de fin
+        self.gagneImage = pygame.image.load('assets/gagneImage.png')
+        self.perduImage = pygame.image.load('assets/perduImage.png')
 
 
 
@@ -280,7 +283,7 @@ class Affichage:
             if jeu.getCombatEtape() == CombatEtape.IMAGE_PKMNCHANGE:
                 self.screen.blit(self.youExchangeYourPokemon,(161,168))
                 if self.boutonRondA.draw() == True : 
-                    jeu.setCombatEtape(CombatEtape.INACTIF)
+                    jeu.setCombatEtape(CombatEtape.BOT_ATTAQUE)
                     jeu.p1.echangerPokemons()
                 if self.boutonRondB.draw() == True :
                     pass
@@ -346,4 +349,19 @@ class Affichage:
                 jeu.setJeuEtape(JeuEtape.FIN_COMBAT)
 
         if jeu.getJeuEtape()==JeuEtape.FIN_COMBAT:
-            self.screen.blit(self.combat_fight,(161,168))
+            if jeu.p1.getPokemons()[0].getpV() > 0 or jeu.p1.getPokemons()[1].getpV() > 0 :
+                self.screen.blit(self.gagneImage,(161,168))
+            else:
+                self.screen.blit(self.perduImage,(161,168))
+            if self.boutonRondA.draw() == True : 
+                exit()
+            if self.boutonRondB.draw() == True :
+                exit()
+            if self.boutonH.draw() == True :
+                pass
+            if self.boutonG.draw() == True :
+                pass
+            if self.boutonD.draw() == True :
+                pass
+            if self.boutonB.draw() == True :
+                pass
