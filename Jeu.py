@@ -4,7 +4,7 @@ from JeuEtape import *
 from CombatEtape import *
 from CombatCurseur import *
 from Dresseur import *
-
+from Pokemon import *
 class Jeu:
 
     def __init__(self):
@@ -14,12 +14,12 @@ class Jeu:
         izuku = Pokemon("IZUKU", 200, 5, 50, "eau", "plante", "feu", 'assets/choisirIzuku.png', 'assets\pokemonsCombat/izukuCombatJoueur.png', 'assets\pokemonsCombat/izukuCombatBot.png')
         soldier = Pokemon("SOLDIER", 200, 5, 50, "eau", "plante", "feu", 'assets/choisirSoldier.png', 'assets\pokemonsCombat/soldierCombatJoueur.png', 'assets\pokemonsCombat/soldierCombatBot.png')
         """
-        jessy = Pokemon("JESSY", 10, 5, 50, "eau", "plante", "feu", 'assets/choisirJessy.png', 'assets\pokemonsCombat/jessyCombatJoueur.png', 'assets\pokemonsCombat/jessyCombatBot.png')
-        olivier = Pokemon("OLIVIER", 10, 5, 50, "eau", "plante", "feu", 'assets/choisirOlivier.png', 'assets\pokemonsCombat/olivierCombatJoueur.png', 'assets\pokemonsCombat/olivierCombatBot.png')
-        raoul = Pokemon("RAOUL", 10, 5, 50, "eau", "plante", "feu", 'assets/choisirRaoul.png', 'assets\pokemonsCombat/raoulCombatJoueur.png', 'assets\pokemonsCombat/raoulCombatBot.png')
-        kilyan = Pokemon("KILYAN", 10, 5, 50, "eau", "plante", "feu", 'assets/choisirKilyan.png', 'assets\pokemonsCombat/kilyanCombatJoueur.png', 'assets\pokemonsCombat/kilyanCombatBot.png')
-        titouan = Pokemon("TITOUAN", 10, 5, 50, "eau", "plante", "feu", 'assets/choisirTitouan.png', 'assets\pokemonsCombat/titouanCombatJoueur.png', 'assets\pokemonsCombat/titouanCombatBot.png')
-        professeur = Pokemon("PROFESSEUR", 10, 5, 50, "eau", "plante", "feu", 'assets/choisirProfesseur.png', 'assets\pokemonsCombat/professeurCombatJoueur.png', 'assets\pokemonsCombat/professeurCombatBot.png')
+        jessy = Pokemon("JESSY", 50, 15, 50, "eau", "plante", "feu", 'assets/choisirJessy.png', 'assets\pokemonsCombat/jessyCombatJoueur.png', 'assets\pokemonsCombat/jessyCombatBot.png')
+        olivier = Pokemon("OLIVIER", 50, 15, 50, "feu", "eau", "plante", 'assets/choisirOlivier.png', 'assets\pokemonsCombat/olivierCombatJoueur.png', 'assets\pokemonsCombat/olivierCombatBot.png')
+        raoul = Pokemon("RAOUL", 50, 15, 50, "plante", "feu", "eau", 'assets/choisirRaoul.png', 'assets\pokemonsCombat/raoulCombatJoueur.png', 'assets\pokemonsCombat/raoulCombatBot.png')
+        kilyan = Pokemon("KILYAN", 50, 15, 50, "eau", "plante", "feu", 'assets/choisirKilyan.png', 'assets\pokemonsCombat/kilyanCombatJoueur.png', 'assets\pokemonsCombat/kilyanCombatBot.png')
+        titouan = Pokemon("TITOUAN", 50, 15, 50, "feu", "eau", "plante", 'assets/choisirTitouan.png', 'assets\pokemonsCombat/titouanCombatJoueur.png', 'assets\pokemonsCombat/titouanCombatBot.png')
+        professeur = Pokemon("PROFESSEUR", 50, 15, 50, "plante", "feu", "eau", 'assets/choisirProfesseur.png', 'assets\pokemonsCombat/professeurCombatJoueur.png', 'assets\pokemonsCombat/professeurCombatBot.png')
 
         self.listePokemons=[jessy, olivier, raoul, kilyan, titouan, professeur] # ajouter charmander, gon, izuku, soldier, pour les avoir
 
