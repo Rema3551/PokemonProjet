@@ -44,8 +44,7 @@ class Affichage:
         self.youCantRunInCombat = pygame.image.load('assets/youCantRunInCombat.png')
         self.youDontHaveAnyItems = pygame.image.load('assets/youDontHaveAnyItems.png')
         self.youExchangeYourPokemon = pygame.image.load('assets/youExchangeYourPokemon.png')
-        self.youCantExchangeYourPokemon = pygame.image.load('assets/youExchangeYourPokemon.png')
-        self.playerAttackImage = pygame.image.load('assets/youCantExchangeYourPokemon.png')
+        self.youCantExchangeYourPokemon = pygame.image.load('assets/youCantExchangeYourPokemon.png')
 
         self.playerAttackImage = pygame.image.load('assets/yourPokemonAttacksTheOpposingPokemon.png')
         self.botAttackImage = pygame.image.load('assets/theOpposingPokemonAttacksYourPokemon.png')
