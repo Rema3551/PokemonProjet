@@ -21,11 +21,12 @@ class Pokemon:
         -getCombatImageBot(self)
     """
 
-    def __init__(self, nom:str, pvMax:int, pA:int, attaqSpeciale:int, type:str, avantage:str, faiblesse:str, selectionImage:str, combatImageJoueur:str, combatImageBot:str):
+    def __init__(self, nom:str, pvMax:int, pA:int, attaqSpeciale:int, vitesse:int, type:str, avantage:str, faiblesse:str, selectionImage:str, combatImageJoueur:str, combatImageBot:str):
         self.nom=nom
         self.pvMax=pvMax
         self.pv=pvMax
         self.pA=pA
+        self.vitesse=vitesse
         self.attaqSpeciale=attaqSpeciale
         self.faiblesse=faiblesse 
         self.avantage=avantage
@@ -53,6 +54,13 @@ class Pokemon:
         retourne le nom du pokémon
         """
         return self.nom
+
+    def getVitesse(self):
+        """
+        retourne la vitesse du pokémon
+        """
+        return self.vitesse
+
     
     def attaquer(self,pokemon2):
         """

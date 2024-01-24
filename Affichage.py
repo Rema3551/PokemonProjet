@@ -44,6 +44,9 @@ class Affichage:
         self.youCantRunInCombat = pygame.image.load('assets/youCantRunInCombat.png')
         self.youDontHaveAnyItems = pygame.image.load('assets/youDontHaveAnyItems.png')
         self.youExchangeYourPokemon = pygame.image.load('assets/youExchangeYourPokemon.png')
+        self.youCantExchangeYourPokemon = pygame.image.load('assets/youExchangeYourPokemon.png')
+        self.playerAttackImage = pygame.image.load('assets/youCantExchangeYourPokemon.png')
+
         self.playerAttackImage = pygame.image.load('assets/yourPokemonAttacksTheOpposingPokemon.png')
         self.botAttackImage = pygame.image.load('assets/theOpposingPokemonAttacksYourPokemon.png')
         #musiques/son de fond
@@ -235,7 +238,10 @@ class Affichage:
                         jeu.setCombatCurseur(CombatCurseur.COMBAT_ITEM)
 
                     if self.boutonRondA.draw() == True :
-                        jeu.setCombatEtape(CombatEtape.JOUEUR_ATTAQUE)
+                        if jeu.p1.getPokemons()[0].getVitesse() > jeu.bot.getPokemons()[0].getVitesse():
+                            jeu.setCombatEtape(CombatEtape.JOUEUR_ATTAQUE)
+                        else :
+                            jeu.setCombatEtape(CombatEtape.BOT_ATTAQUE)
             
                 if self.boutonH.draw() == True :
                     pass
@@ -281,10 +287,14 @@ class Affichage:
                     pass
 
             if jeu.getCombatEtape() == CombatEtape.IMAGE_PKMNCHANGE:
-                self.screen.blit(self.youExchangeYourPokemon,(161,168))
+                if jeu.p1.getPokemons()[0].getpV() > 0 and jeu.p1.getPokemons()[1].getpV() > 0:
+                    self.screen.blit(self.youExchangeYourPokemon,(161,168))
+                else:
+                    self.screen.blit(self.youCantExchangeYourPokemon,(161,168))
                 if self.boutonRondA.draw() == True : 
                     jeu.setCombatEtape(CombatEtape.BOT_ATTAQUE)
-                    jeu.p1.echangerPokemons()
+                    if jeu.p1.getPokemons()[0].getpV() > 0 and jeu.p1.getPokemons()[1].getpV() > 0:
+                        jeu.p1.echangerPokemons()
                 if self.boutonRondB.draw() == True :
                     pass
                 if self.boutonH.draw() == True :
@@ -307,7 +317,10 @@ class Affichage:
                         jeu.bot.echangerPokemons()
                         jeu.setCombatEtape(CombatEtape.INACTIF)
                     else :
-                        jeu.setCombatEtape(CombatEtape.BOT_ATTAQUE)
+                        if jeu.p1.getPokemons()[0].getVitesse() > jeu.bot.getPokemons()[0].getVitesse():
+                            jeu.setCombatEtape(CombatEtape.BOT_ATTAQUE)
+                        else :
+                            jeu.setCombatEtape(CombatEtape.INACTIF)
                 if self.boutonH.draw() == True :
                     pass
                 if self.boutonG.draw() == True :
@@ -329,7 +342,10 @@ class Affichage:
                     if jeu.p1.getPokemons()[0].getpV() <= 0 :
                         #mettre une image "vous changez de pokémon"
                         jeu.p1.echangerPokemons()
-                    jeu.setCombatEtape(CombatEtape.INACTIF)
+                    if jeu.p1.getPokemons()[0].getVitesse() > jeu.bot.getPokemons()[0].getVitesse():
+                            jeu.setCombatEtape(CombatEtape.INACTIF)
+                    else :
+                            jeu.setCombatEtape(CombatEtape.JOUEUR_ATTAQUE)
 
                 if self.boutonH.draw() == True :
                     pass
