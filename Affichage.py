@@ -141,48 +141,26 @@ class Affichage:
             Le joueur peut appuyer sur les flèches directionnels pour pouvoir déplacer le curseur
             Le joueur doit appuyer sur le bouton A pour soit attaquer, changer de pokemon, essayer de s'échapper et essayer d'utiliser un item
             """
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
             self.screen.blit(self.combat_truc_pour_les_personnages,(161,168))
+            #initialise l'image de combat du pokemon du joueur
             combatImageJoueur = pygame.image.load(jeu.p1.getPokemons()[0].getCombatImageJoueur())
             self.screen.blit(combatImageJoueur,(161,168))
+            #initialise l'image de combat du pokemon du bot
             combatImageBot = pygame.image.load(jeu.bot.getPokemons()[0].getCombatImageBot())
             self.screen.blit(combatImageBot,(161,168))
-        
+            #initialise les barres de vie
             vieBarreJ = VieBarre(282,296,100,5,jeu.p1.getPokemons()[0].getpV(), jeu.p1.getPokemons()[0].getPvMax())
             vieBarreB = VieBarre(190,195,100,5,jeu.bot.getPokemons()[0].getpV(), jeu.bot.getPokemons()[0].getPvMax())            
             vieBarreJ.draw(self.screen)
             vieBarreB.draw(self.screen)
-
+            #initialise la vie des pokemons en "écriture"
             pvImageJoueur = str(jeu.p1.getPokemons()[0].getpV()) + "/" + str(jeu.p1.getPokemons()[0].getPvMax())
             pvImgJoueur = pygame.font.SysFont('pokemonclassicregular', 12).render((pvImageJoueur), True, self.BLANC)
             pvImageBot = str(jeu.bot.getPokemons()[0].getpV()) + "/" + str(jeu.bot.getPokemons()[0].getPvMax())
             pvImgBot = pygame.font.SysFont('pokemonclassicregular', 12).render((pvImageBot), True, self.BLANC)
             self.screen.blit(pvImgJoueur, (290, 297)) 
-
             self.screen.blit(pvImgBot, (188, 197))
-
+            #initialise les noms des pokemons en "écriture"
             nomImageJoueur = str(jeu.p1.getPokemons()[0].getNom())
             nomImgjoueur = pygame.font.SysFont('pokemonclassicregular', 12).render((nomImageJoueur), True, self.BLANC)
             nomImageBot = str(jeu.bot.getPokemons()[0].getNom())
@@ -192,60 +170,57 @@ class Affichage:
 
             
             
-            
             if jeu.getCombatEtape() == CombatEtape.INACTIF:
-            
-                if jeu.getCombatCurseur() == CombatCurseur.COMBAT_RUN :
-                    self.screen.blit(self.combat_run,(161,168))
+                """
+                1ere etape du combat : l'inactivité (quand il n'y a pas "d'intéractions")
+                Le joueur peut appuyer sur les flèches directionnels pour pouvoir déplacer le curseur
+                Le joueur doit appuyer sur le bouton A pour soit attaquer, changer de pokemon, essayer de s'échapper et essayer d'utiliser un item
+                L'image de base de combat
+                """
+                if jeu.getCombatCurseur() == CombatCurseur.COMBAT_RUN : #Si le curseur est sur run 
+                    self.screen.blit(self.combat_run,(161,168)) #image du curseur sur run
                     if self.boutonH.draw() == True :
                         jeu.setCombatCurseur(CombatCurseur.COMBAT_PKMN)
                     if self.boutonG.draw() == True :
                         jeu.setCombatCurseur(CombatCurseur.COMBAT_ITEM)
                     if self.boutonRondA.draw()== True :
-                        jeu.setCombatEtape(CombatEtape.IMAGE_RUN)
+                        jeu.setCombatEtape(CombatEtape.IMAGE_RUN) #change l'étape du combat à CombatEtape.IMAGE_RUN
                     
-                if jeu.getCombatCurseur() == CombatCurseur.COMBAT_ITEM :
-                    self.screen.blit(self.combat_item,(161,168))
+                if jeu.getCombatCurseur() == CombatCurseur.COMBAT_ITEM : #Si le curseur est sur item 
+                    self.screen.blit(self.combat_item,(161,168)) #image du curseur sur item
                     if self.boutonRondA.draw() == True :
-                        jeu.setCombatEtape(CombatEtape.IMAGE_ITEMS)
+                        jeu.setCombatEtape(CombatEtape.IMAGE_ITEMS) #change l'étape du combat à CombatEtape.IMAGE_ITEMS
                     if self.boutonH.draw() == True :
                         jeu.setCombatCurseur(CombatCurseur.COMBAT_FIGHT)
                     if self.boutonD.draw() == True :
                         jeu.setCombatCurseur(CombatCurseur.COMBAT_RUN)
                     
-
-                if jeu.getCombatCurseur() == CombatCurseur.COMBAT_PKMN :
-                    self.screen.blit(self.combat_choosePkm,(161,168))
-                    
+                if jeu.getCombatCurseur() == CombatCurseur.COMBAT_PKMN : #Si le curseur est sur pkmn 
+                    self.screen.blit(self.combat_choosePkm,(161,168)) #image du curseur sur pkmn
                     if self.boutonRondA.draw() == True :
-                        jeu.setCombatEtape(CombatEtape.IMAGE_PKMNCHANGE)
-
+                        jeu.setCombatEtape(CombatEtape.IMAGE_PKMNCHANGE) #change l'étape du combat à CombatEtape.IMAGE_PKMNCHANGE
                     if self.boutonG.draw() == True :
-                        jeu.setCombatCurseur(CombatCurseur.COMBAT_FIGHT)
-                    
+                        jeu.setCombatCurseur(CombatCurseur.COMBAT_FIGHT)                   
                     if self.boutonB.draw() == True :
                         jeu.setCombatCurseur(CombatCurseur.COMBAT_RUN)
                     
-
-                if jeu.getCombatCurseur() == CombatCurseur.COMBAT_FIGHT :
-                    self.screen.blit(self.combat_fight,(161,168))
-
+                if jeu.getCombatCurseur() == CombatCurseur.COMBAT_FIGHT : #Si le curseur est sur fight
+                    self.screen.blit(self.combat_fight,(161,168)) #image du curseur sur fight
                     if self.boutonD.draw() == True :
-                        jeu.setCombatCurseur(CombatCurseur.COMBAT_PKMN)
-                    
+                        jeu.setCombatCurseur(CombatCurseur.COMBAT_PKMN)                   
                     if self.boutonB.draw() == True :
                         jeu.setCombatCurseur(CombatCurseur.COMBAT_ITEM)
-
                     if self.boutonRondA.draw() == True :
                         if jeu.p1.getPokemons()[0].getVitesse() > jeu.bot.getPokemons()[0].getVitesse():
                             jeu.setCombatEtape(CombatEtape.JOUEUR_ATTAQUE)
                         else :
                             jeu.setCombatEtape(CombatEtape.BOT_ATTAQUE)
             
+                #pour ne pas faire de redondances pour chaque étapes du curseur, création des boutons ici pour qu'ils soient visibiles même s'ils ne sont pas utilisés
                 if self.boutonH.draw() == True :
                     pass
                 if self.boutonG.draw() == True :
-                        pass
+                    pass
                 if self.boutonD.draw() == True :
                     pass
                 if self.boutonRondA.draw() == True :
@@ -286,14 +261,18 @@ class Affichage:
                     pass
 
             if jeu.getCombatEtape() == CombatEtape.IMAGE_PKMNCHANGE:
-                if jeu.p1.getPokemons()[0].getpV() > 0 and jeu.p1.getPokemons()[1].getpV() > 0:
+                """
+                Autre etape du combat : le changement de pokémon
+                Le joueur doit appuyer sur le bouton A pour finir son tour et échanger ses Pokemons
+                """
+                if jeu.p1.getPokemons()[0].getpV() > 0 and jeu.p1.getPokemons()[1].getpV() > 0: #si les 2 Pokemons du joueur sont encore en vie
                     self.screen.blit(self.youExchangeYourPokemon,(161,168))
                 else:
-                    self.screen.blit(self.youCantExchangeYourPokemon,(161,168))
+                    self.screen.blit(self.youCantExchangeYourPokemon,(161,168)) 
                 if self.boutonRondA.draw() == True : 
-                    jeu.setCombatEtape(CombatEtape.BOT_ATTAQUE)
-                    if jeu.p1.getPokemons()[0].getpV() > 0 and jeu.p1.getPokemons()[1].getpV() > 0:
-                        jeu.p1.echangerPokemons()
+                    jeu.setCombatEtape(CombatEtape.BOT_ATTAQUE) #fin du tour, donc changement d'étape du combat
+                    if jeu.p1.getPokemons()[0].getpV() > 0 and jeu.p1.getPokemons()[1].getpV() > 0: #si les 2 Pokemons du joueur sont encore en vie
+                        jeu.p1.echangerPokemons() #on les échange
                 if self.boutonRondB.draw() == True :
                     pass
                 if self.boutonH.draw() == True :
@@ -307,15 +286,20 @@ class Affichage:
 
 
             if jeu.getCombatEtape() == CombatEtape.JOUEUR_ATTAQUE :
+                """
+                Autre etape du combat : l'attaque du joueur
+                Le joueur doit appuyer sur le bouton A pour finir son tour et pour que son Pokemon attaque le Pokemon adverse
+                """
                 self.screen.blit(self.playerAttackImage,(161,168))
                 
                 if self.boutonRondA.draw() == True :   
                     jeu.p1.getPokemons()[0].attaquer(jeu.bot.getPokemons()[0])
-                    if jeu.bot.getPokemons()[0].getpV() <= 0 :
-                        #mettre une image "votre adversaire change de pokémon"
+                    #si l'attaque a tué le Pokemon adverse, on échange les Pokemons adverses
+                    if jeu.bot.getPokemons()[0].getpV() <= 0 : 
                         jeu.bot.echangerPokemons()
-                        jeu.setCombatEtape(CombatEtape.INACTIF)
+                        jeu.setCombatEtape(CombatEtape.INACTIF) #fin du tour et le pokemon adverse n'attaque pas puisqu'il vient de mourir, donc changement de l'étape du combat à CombatEtape.INACTIF
                     else :
+                        #si la vitesse du Pokemon du joueur est supérieur à la vitesse du Pokemon adverse, cela veut dire que le Pokemon du joueur est le premier à attaquer, sinon, cela veut dire que le Pokemon du bot a déjà attaquer.
                         if jeu.p1.getPokemons()[0].getVitesse() > jeu.bot.getPokemons()[0].getVitesse():
                             jeu.setCombatEtape(CombatEtape.BOT_ATTAQUE)
                         else :
@@ -331,6 +315,29 @@ class Affichage:
                 if self.boutonRondB.draw() == True :
                     pass
                 
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             
             if jeu.getCombatEtape() == CombatEtape.BOT_ATTAQUE :
                 self.screen.blit(self.botAttackImage,(161,168))
