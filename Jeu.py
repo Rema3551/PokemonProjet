@@ -29,71 +29,93 @@ class Jeu:
         self.combatCurseur = CombatCurseur.COMBAT_FIGHT
         self.p1=Dresseur()
         self.bot=Dresseur()
-        
-        self.pj1=""
-        self.pj2=""
-
-        self.joueurEnTrainAttaquer = False
-        self.botEnTrainAttaquer = False
-
-
-    
-    def getPj1(self):
-        return self.pj1
-    
-    def setPj1(self,pj1):
-        self.pj1=pj1
-
-    def getPj2(self):
-        return self.pj2
-    
-    def setPj2(self,pj2):
-        self.pj2=pj2
-
-    def getPj1pvMax(self):
-        return
 
     def setJeuEtape(self,jeuEtape):
+        """change l'étape du jeu
+        >>> jeu = Jeu()
+        >>> jeu.getJeuEtape()
+        <JeuEtape.DEBUT: 0>
+        >>> jeu.setJeuEtape(JeuEtape.COMBAT)
+        >>> jeu.getJeuEtape()
+        <JeuEtape.COMBAT: 2>
+        """
         self.jeuEtape=jeuEtape
 
     def getJeuEtape(self):
+        """retourne l'étape du jeu
+        >>> jeu = Jeu()
+        >>> jeu.getJeuEtape()
+        <JeuEtape.DEBUT: 0>
+        >>> jeu.setJeuEtape(JeuEtape.COMBAT)
+        >>> jeu.getJeuEtape()
+        <JeuEtape.COMBAT: 2>
+        """
         return self.jeuEtape
 
     def getCombatEtape(self):
+        """retourne l'étape du combat
+        >>> jeu = Jeu()
+        >>> jeu.getCombatEtape()
+        <CombatEtape.INACTIF: 0>
+        >>> jeu.setCombatEtape(CombatEtape.JOUEUR_ATTAQUE)
+        >>> jeu.getCombatEtape()
+        <CombatEtape.JOUEUR_ATTAQUE: 1>
+        """
         return self.combatEtape
     
     def setCombatEtape(self, combatEtape):
+        """change l'étape du combat
+        >>> jeu = Jeu()
+        >>> jeu.getCombatEtape()
+        <CombatEtape.INACTIF: 0>
+        >>> jeu.setCombatEtape(CombatEtape.JOUEUR_ATTAQUE)
+        >>> jeu.getCombatEtape()
+        <CombatEtape.JOUEUR_ATTAQUE: 1>
+        """
         self.combatEtape=combatEtape
 
     def getCombatCurseur(self):
+        """renvoie "l'étape" du curseur
+        >>> jeu = Jeu()
+        >>> jeu.getCombatCurseur()
+        <CombatCurseur.COMBAT_FIGHT: 0>
+        >>> jeu.setCombatCurseur(CombatCurseur.COMBAT_ITEM)
+        >>> jeu.getCombatCurseur()
+        <CombatCurseur.COMBAT_ITEM: 1>
+        """
         return self.combatCurseur
 
     def setCombatCurseur(self, combatCurseur):
+        """change "l'étape" du curseur
+        >>> jeu = Jeu()
+        >>> jeu.getCombatCurseur()
+        <CombatCurseur.COMBAT_FIGHT: 0>
+        >>> jeu.setCombatCurseur(CombatCurseur.COMBAT_ITEM)
+        >>> jeu.getCombatCurseur()
+        <CombatCurseur.COMBAT_ITEM: 1>
+        """
         self.combatCurseur=combatCurseur
 
     def getPokemonSelectionImage(self, position):
+        """index
+        >>> jeu = Jeu()
+        >>> jeu.getPokemonSelectionImage(0)
+        'assets/choisirJessy.png'
+        >>> jeu.getPokemonSelectionImage(3)
+        'assets/choisirKilyan.png'
+        >>> jeu.getPokemonSelectionImage(4)
+        'assets/choisirTitouan.png'
+        >>> jeu.getPokemonSelectionImage(5)
+        'assets/choisirProfesseur.png'
+        >>> jeu.getPokemonSelectionImage(1)
+        'assets/choisirOlivier.png'
+        """
         pokemon = self.listePokemons[position]
         return pokemon.selectionImage
     
-    def getJoueurEnTrainAttaquer(self) -> bool:
-        return self.joueurEnTrainAttaquer
-    
-    def setJoueurEnTrainAttaquer(self):
-        if self.joueurEnTrainAttaquer == True :
-            self.joueurEnTrainAttaquer = False
-        else :
-            self.joueurEnTrainAttaquer = True
 
-    def getBotEnTrainAttaquer(self):
-        return self.botEnTrainAttaquer
-
-    def setBotEnTrainAttaquer(self):
-        if self.botEnTrainAttaquer == True:
-            self.botEnTrainAttaquer = False
-        else :
-            self.botEnTrainAttaquer = True
-
-    def combatFin(self):
+    def combatFin(self)->bool:
+        """renvoie si c'est la fin du combat ou non"""
         if self.p1.getPokemons()[0].getpV() <= 0 and self.p1.getPokemons()[1].getpV() <= 0:
             return True
         elif self.bot.getPokemons()[0].getpV() <= 0 and self.bot.getPokemons()[1].getpV() <= 0:
@@ -103,14 +125,19 @@ class Jeu:
 
 
     def ajouterPokemonsBot(self):
+        """ajoute des pokemons aléatoires au bot
+        >>> jeu=Jeu()
+        >>> jeu.ajouterPokemonsBot()
+        >>> jeu.bot.getPokemons()[0].getNom()
+        'TITOUAN'
+        >>> jeu.bot.getPokemons()[1].getNom()
+        'JESSY'
+        """
         self.pokemonsBot=random.shuffle(self.listePokemons)
         self.bot.setPokemon(self.listePokemons[0])
         self.bot.setPokemon(self.listePokemons[1])
         self.listePokemons.pop(1)
         self.listePokemons.pop(0)
-        print(self.bot.getPokemons()[0].nom)
-        print(self.bot.getPokemons()[1].nom)
-        print(self.listePokemons)
 
     def print(self):
         self.affichage.draw(self)
