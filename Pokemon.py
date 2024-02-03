@@ -38,6 +38,9 @@ class Pokemon:
     def __str__(self):
         """le str renvoie seulement le nom"""
         return self.nom
+    
+    def __repr__(self):
+        return self.__str__()
 
     def getPvMax(self):
         """

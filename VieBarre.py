@@ -1,6 +1,9 @@
 import pygame
 
 class VieBarre():
+    """
+    dessine les barres de vie
+    """
     def __init__(self, x, y, w, h, pv, pvMax):
         self.x = x
         self.y = y

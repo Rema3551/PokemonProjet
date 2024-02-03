@@ -283,8 +283,9 @@ class Affichage:
                     pass
                 if self.boutonB.draw() == True :
                     pass
-
-
+                
+                
+                
             if jeu.getCombatEtape() == CombatEtape.JOUEUR_ATTAQUE :
                 """
                 Autre etape du combat : l'attaque du joueur
@@ -315,42 +316,25 @@ class Affichage:
                 if self.boutonRondB.draw() == True :
                     pass
                 
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
+                
+                
             if jeu.getCombatEtape() == CombatEtape.BOT_ATTAQUE :
+                """
+                Autre etape du combat : l'attaque du bot
+                Son tour se fait automatiquement
+                """
                 self.screen.blit(self.botAttackImage,(161,168))
                 
                 if self.boutonRondA.draw() == True :
-
                     jeu.bot.getPokemons()[0].attaquer(jeu.p1.getPokemons()[0])
+                    #si l'attaque a tué le Pokemon adverse, on échange les Pokemons adverses, donc ceux du joueur
                     if jeu.p1.getPokemons()[0].getpV() <= 0 :
-                        #mettre une image "vous changez de pokémon"
                         jeu.p1.echangerPokemons()
-                    if jeu.p1.getPokemons()[0].getVitesse() > jeu.bot.getPokemons()[0].getVitesse():
-                            jeu.setCombatEtape(CombatEtape.INACTIF)
                     else :
+                        #si la vitesse du Pokemon du joueur est supérieur à la vitesse du Pokemon adverse, cela veut dire que le Pokemon du joueur a déjà attaquer, sinon, cela veut dire que le Pokemon du bot est le premier à attaquer.
+                        if jeu.p1.getPokemons()[0].getVitesse() > jeu.bot.getPokemons()[0].getVitesse():
+                            jeu.setCombatEtape(CombatEtape.INACTIF)
+                        else:
                             jeu.setCombatEtape(CombatEtape.JOUEUR_ATTAQUE)
 
                 if self.boutonH.draw() == True :
@@ -366,11 +350,16 @@ class Affichage:
                 
             
             if jeu.combatFin():
-                #mettre une image "vous avez gagné" ou "vous avez perdu"
-                
+                """vérifie si le combat est fini ou non"""
                 jeu.setJeuEtape(JeuEtape.FIN_COMBAT)
 
         if jeu.getJeuEtape()==JeuEtape.FIN_COMBAT:
+            """
+            Dernière etape du jeu : l'écran de fin
+            Renvoie une image en fonction de si le joueur a gagné ou non
+            Le joueur doit appuyer sur le bouton A ou sur le bouton B pour finir le jeu et arrêter le programme
+            """
+            #si le joueur a encore un pokemon en vie, c'est qu'il a gagné :
             if jeu.p1.getPokemons()[0].getpV() > 0 or jeu.p1.getPokemons()[1].getpV() > 0 :
                 self.screen.blit(self.gagneImage,(161,168))
             else:
