@@ -5,6 +5,7 @@ class Pokemon:
         -pvMax:int (pv maximum du pokemon)
         -pA:int (point d'attaque du pokemon)
         -attaqSpeciale:int (point d'attque de l'attaque spéciale du pokemon)
+        -vitesse:int (vitesse du pokemon)
         -type:str (type du pokemon)
         -avantage:str (avantage par rapport au type du pokemon)
         -faiblesse:str (faiblesse par rapport au type du pokemon)

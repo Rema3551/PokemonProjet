@@ -56,11 +56,8 @@ class Affichage:
         self.perduImage = pygame.image.load('assets/perduImage.png')
 
 
-
     def flip(self):
         pygame.display.flip()
-
-
 
     def draw(self, jeu:Jeu):
         """
